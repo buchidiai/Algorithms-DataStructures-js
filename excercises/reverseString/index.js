@@ -29,4 +29,18 @@ function reverse(str) {
 //   return  newString = char + newString;
 //   }
 
+//solution 3
+
+// push chracters into a array backwards
+//and join them  back together
+
+// solution 3 ->
+//  let reverse = [];
+
+//  for (let i = str.length - 1; i >= 0; i--) {
+//    reverse.push(str[i]);
+//  }
+
+//  return reverse.join("");
+
 module.exports = reverse;
