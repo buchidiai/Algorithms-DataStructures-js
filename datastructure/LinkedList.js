@@ -26,7 +26,7 @@ class LinkedList {
     let node = new Node(value);
 
     //set next to existing head
-    node.next = this.head;
+    node.setNext(this.head);
     //set head to newNode
     this.head = node;
     this.length++;
@@ -46,6 +46,7 @@ class LinkedList {
   }
 
   insert(index, value) {
+    //check index
     if (index >= this.length) {
       //add to end of list if index is > length
       return this.append(value);
@@ -54,15 +55,33 @@ class LinkedList {
     //instance Node class
     let node = new Node(value);
 
-    //get node value of item before index of insertion
+    //get node value of item located before index of insertion
     const leader = this.traverseToIndex(index - 1);
+
+    console.log(leader, "leader");
     //node next value
     const holdingPointer = leader.next;
+
+    console.log(holdingPointer, "holdingPointer");
+
     //insert new node
     leader.next = node;
     //point to next value
-    node.next = holdingPointer;
+    node.setNext(holdingPointer);
     this.length++;
+    return this.printList();
+  }
+
+  remove(index) {
+    if (index >= this.length) {
+      //add to end of list if index is > length
+      return "Index not found";
+    }
+
+    const leader = this.traverseToIndex(index - 1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
     return this.printList();
   }
 
@@ -84,5 +103,6 @@ myLinkedList.append(22);
 myLinkedList.append(19);
 myLinkedList.append(33);
 myLinkedList.append(55);
-myLinkedList.prepend(99);
-myLinkedList.insert(2, 198);
+// myLinkedList.prepend(99);
+// myLinkedList.insert(2, 198);
+myLinkedList.remove(2);
