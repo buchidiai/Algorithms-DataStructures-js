@@ -1,3 +1,4 @@
+const Node = require("./Node");
 class LinkedList {
   constructor(value) {
     this.head = {
@@ -9,33 +10,71 @@ class LinkedList {
     this.length = 1;
   }
   append(value) {
-    const newNode = {
-      value: value,
-      next: null,
-    };
+    //initialize Node class
+    let node = new Node(value);
+
     //add new value to tail
-    this.tail.next = newNode; //null
-    this.tail = newNode; //new value & next is null
+    this.tail.next = node; //null
+    this.tail = node; //new value & next is null
     this.length++;
 
-    // console.log(this);
     return this;
   }
 
   prepend(value) {
-    //create node object
-    const newNode = {
-      value: value,
-      next: null,
-    };
+    //instance Node class
+    let node = new Node(value);
 
     //set next to existing head
-    newNode.next = this.head;
+    node.next = this.head;
     //set head to newNode
-    this.head = newNode;
+    this.head = node;
     this.length++;
 
     return this;
+  }
+
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    console.log(array);
+    return array;
+  }
+
+  insert(index, value) {
+    if (index >= this.length) {
+      //add to end of list if index is > length
+      return this.append(value);
+    }
+
+    //instance Node class
+    let node = new Node(value);
+
+    //get node value of item before index of insertion
+    const leader = this.traverseToIndex(index - 1);
+    //node next value
+    const holdingPointer = leader.next;
+    //insert new node
+    leader.next = node;
+    //point to next value
+    node.next = holdingPointer;
+    this.length++;
+    return this.printList();
+  }
+
+  traverseToIndex(index) {
+    //Check parameters
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
   }
 }
 
@@ -46,3 +85,4 @@ myLinkedList.append(19);
 myLinkedList.append(33);
 myLinkedList.append(55);
 myLinkedList.prepend(99);
+myLinkedList.insert(2, 198);
