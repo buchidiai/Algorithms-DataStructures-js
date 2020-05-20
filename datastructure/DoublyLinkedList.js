@@ -1,9 +1,11 @@
 const Node = require("./Node");
-class LinkedList {
+
+class DoublyLinkedList {
   constructor(value) {
     this.head = {
       value: value,
       next: null,
+      pre: null,
     };
     this.tail = this.head;
 
@@ -11,19 +13,20 @@ class LinkedList {
   }
   append(value) {
     //initialize Node class
-    let node = new Node(value, "singleLinkedList");
+    let node = new Node(value, "doubleLinkList");
 
+    node.previous = this.tail;
     //add new value to tail
     this.tail.next = node; //null
     this.tail = node; //new value & next is null
     this.length++;
 
-    return this;
+    return console.log(this);
   }
 
   prepend(value) {
     //instance Node class
-    let node = new Node(value, "singleLinkedList");
+    let node = new Node(value);
 
     //set next to existing head
     node.setNext(this.head);
@@ -53,7 +56,7 @@ class LinkedList {
     }
 
     //instance Node class
-    let node = new Node(value, "singleLinkedList");
+    let node = new Node(value);
 
     //get node value of item located before index of insertion
     const leader = this.traverseToIndex(index - 1);
@@ -97,12 +100,12 @@ class LinkedList {
   }
 }
 
-let myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-myLinkedList.append(22);
-myLinkedList.append(19);
-myLinkedList.append(33);
-myLinkedList.append(55);
-// myLinkedList.prepend(99);
-// myLinkedList.insert(2, 198);
-myLinkedList.remove(2);
+let myDoublyLinkedList = new DoublyLinkedList(10);
+myDoublyLinkedList.append(5);
+myDoublyLinkedList.append(22);
+// myDoublyLinkedList.append(19);
+// myDoublyLinkedList.append(33);
+// myDoublyLinkedList.append(55);
+// // myDoublyLinkedList.prepend(99);
+// // myDoublyLinkedList.insert(2, 198);
+// myDoublyLinkedList.remove(2);
