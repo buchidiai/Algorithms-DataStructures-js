@@ -50,7 +50,7 @@ class Stack {
     }
 
     let temp = this.top; // hold top to be deleted
-    this.top = temp.next; //set top to nect
+    this.top = temp.next; //set top to next
     this.length--; //decrement
 
     console.log("====================================");

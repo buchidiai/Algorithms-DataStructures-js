@@ -38,8 +38,8 @@ class Queue {
       this.last = null;
     }
 
-    const holdingPointer = this.first;
-    this.first = holdingPointer.next;
+    const temp = this.first;
+    this.first = temp.next;
     this.length--;
     return this;
   }
