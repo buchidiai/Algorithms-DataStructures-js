@@ -30,20 +30,33 @@ class Stack {
     }
 
     this.length++;
+    console.log("====================================");
+    console.log(
+      "Top: " + this.top.value,
+      "Next: " + JSON.stringify(this.top.next),
+      "Bottom: " + JSON.stringify(this.bottom),
+      "Length: " + this.length
+    );
+    console.log("====================================");
   }
   //remove top of stack
   pop() {
-    if (this.length > 1) {
-      let temp = this.top; // hold top to be deleted
-      this.top = temp.next; //set top to nect
-      this.length--; //decrement
-
-      console.log("====================================");
-      console.log(this);
-      console.log("====================================");
-    } else {
+    if (!this.top) {
       return console.log("empty stack");
     }
+
+    if (this.top === this.bottom) {
+      this.bottom = null;
+    }
+
+    let temp = this.top; // hold top to be deleted
+    this.top = temp.next; //set top to nect
+    this.length--; //decrement
+
+    console.log("====================================");
+    console.log(this);
+    console.log("====================================");
+    this.printList();
   }
 
   printList() {
@@ -54,11 +67,16 @@ class Stack {
 
 const myStack = new Stack();
 
-// myStack.push(5);
+myStack.push(5);
+
 // myStack.push(10);
 // myStack.push(20);
 // myStack.push(11);
 // myStack.push(45);
 
 myStack.pop();
-// myStack.push(9);
+// myStack.pop();
+// myStack.pop();
+// // myStack.push(9);
+
+// myStack.pop();
