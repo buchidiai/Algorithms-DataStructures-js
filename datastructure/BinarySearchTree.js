@@ -60,7 +60,7 @@ class BinarySearchTree {
         currentNode = currentNode.right;
       } else if (currentNode.value === value) {
         //return value if its found
-        return currentNode;
+        return console.log(currentNode);
       }
     }
     return null;
@@ -73,12 +73,13 @@ tree.insert(9);
 tree.insert(4);
 tree.insert(6);
 tree.insert(20);
-// tree.insert(170);
-// tree.insert(15);
+tree.insert(170);
+tree.insert(15);
 // tree.insert(1);
 JSON.stringify(traverse(tree.root));
 
-tree.lookup();
+tree.lookup(15);
+tree.lookup(900);
 
 //     9
 //  4     20
