@@ -170,6 +170,10 @@ tree.insert(754);
 console.log("BFS", tree.BreadthFirstSearch());
 console.log("BFS", tree.BreadthFirstSearchRecursive([tree.root], []));
 
+console.log("DFSpre", tree.DFTPreOrder());
+console.log("DFSin", tree.DFTInOrder());
+console.log("DFSpost", tree.DFTPostOrder());
+
 //     9
 //  4     20
 //1  6  15  170
