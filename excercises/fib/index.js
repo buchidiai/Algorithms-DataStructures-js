@@ -17,7 +17,4 @@ function fibIterative(n) {
   return result[n];
 }
 
-console.log(fibRecursion(6));
-console.log(fibIterative(6));
-
 module.exports = { fibRecursion, fibIterative };
