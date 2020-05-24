@@ -65,7 +65,26 @@ class BinarySearchTree {
     }
     return null;
   }
-  // remove
+  BreadthFirstSearch() {
+    let currentNode = this.root;
+    let list = []; //list of items in tree
+    let queue = []; //keep track of level to access children
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift(); //remove 1st time in queue
+      list.push(currentNode.value); //push it to list
+      if (currentNode.left) {
+        //if theres a item in the left node push it
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        //if theres a item in the right node push it
+        queue.push(currentNode.right);
+      }
+    }
+    return list;
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -75,12 +94,15 @@ tree.insert(6);
 tree.insert(20);
 tree.insert(170);
 tree.insert(15);
+tree.insert(1790);
+tree.insert(18);
 // tree.insert(1);
-JSON.stringify(traverse(tree.root));
+// JSON.stringify(traverse(tree.root));
 
-tree.lookup(15);
-tree.lookup(900);
+// tree.lookup(15);
+// tree.lookup(900);
 
+console.log("BFS", tree.BreadthFirstSearch());
 //     9
 //  4     20
 //1  6  15  170
@@ -91,3 +113,5 @@ function traverse(node) {
   tree.right = node.right === null ? null : traverse(node.right);
   return console.log(tree);
 }
+
+module.exports = BinarySearchTree;
