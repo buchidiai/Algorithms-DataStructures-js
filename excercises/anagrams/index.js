@@ -16,16 +16,21 @@ function anagrams1(stringA, stringB) {
   aStringMap = buildCharMap(stringA);
   bStringMap = buildCharMap(stringB);
 
+  //check if the length of the keys are not the same
+  //if so return false
   if (Object.keys(aStringMap).length !== Object.keys(bStringMap).length) {
     return false;
   }
 
+  //theobjects length are the same
+  //check if the keys are not the same
+  //if so return false
   for (const key in aStringMap) {
     if (aStringMap.hasOwnProperty(key) !== bStringMap.hasOwnProperty(key)) {
       return false;
     }
   }
-
+  //return true because it matches
   return true;
 }
 
