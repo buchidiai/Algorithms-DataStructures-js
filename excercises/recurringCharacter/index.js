@@ -28,6 +28,5 @@ function firstRecurringCharacter(input) {
 // [2,5,5,2,3,5,1,2,4]
 // return 5 because the pairs are before 2,2
 
-firstRecurringCharacter([2, 5, 1, 2, 3, 5, 1, 2, 4]);
-
+console.log(firstRecurringCharacter([2, 5, 1, 2, 3, 5, 1, 2, 4]));
 module.exports = firstRecurringCharacter;
