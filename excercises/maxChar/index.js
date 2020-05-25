@@ -13,13 +13,15 @@ function maxChar(str) {
 
   while (i < str.length) {
     if (hash[str[i]] !== undefined) {
+      // increment the character's value if the character existed in the map
       hash[str[i]]++;
     } else {
+      // Otherwise, the value of the character will be increamented by 1
       hash[str[i]] = 1;
     }
     i++;
   }
-
+  // find the most commonly used character
   for (char in hash) {
     if (hash[char] > max) {
       max = hash[char];
