@@ -17,6 +17,37 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  if (n <= 0) return n;
+
+  for (let i = 0; i < n; i++) {
+    let star = "";
+    for (let j = 0; j < n; j++) {
+      if (j <= i) {
+        star += `#`;
+      } else {
+        star += " ";
+      }
+    }
+    console.log(`'${star}'`);
+  }
+}
+
+//recursion
+function steps1(n, row = 0, stair = "") {
+  if (n === row) {
+    return;
+  }
+
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  const add = stair.length <= row ? "#" : " ";
+  steps(n, row, stair + add);
+}
+
+steps1(10);
 
 module.exports = steps;
