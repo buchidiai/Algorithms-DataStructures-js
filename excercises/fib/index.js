@@ -24,11 +24,11 @@ function fibIterative(n) {
 }
 
 //optimization
-function fibonacciMaster(n) {
+function fibonacciMaster() {
   //O(n)
   let cache = {};
   return function fib(n) {
-    if (n in cache) {
+    if (cache[n]) {
       return cache[n];
     } else {
       if (n < 2) {
@@ -42,12 +42,15 @@ function fibonacciMaster(n) {
   };
 }
 
+//conposition
+let fasterFib = fibonacciMaster();
+
 console.log("recursion", fibRecursion(35));
 console.log("iteration ", fibIterative(20));
-console.log("optimized recursion", fibonacciMaster(20));
+console.log("optimized recursion", fasterFib(20));
 
 console.log(calculations);
 console.log(calculations1);
 console.log(calculations2);
 
-module.exports = { fibRecursion, fibIterative };
+// module.exports = { fibRecursion, fibIterative };
